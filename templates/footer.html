@@ -1,20 +1,55 @@
-<footer class="py-3 my-4 mb-0 text-bg-dark" >
+{% load static %}
+  <footer style="background-color: #060c2e; min-height:400px;" class="text-light" >
+    <div class="row pt-5 text-center">
+      <div class="col-12 col-md">
+          <img src="{% static "img/logo1.png" %}" alt="Logo" width="200" height="200" class="d-inline-block align-text-top">
+
         
-            
-    <div class="container">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="{% url 'core:home_page_view' %}" class="nav-link px-2 text-white">Home</a></li>
-      <li class="nav-item"><a href="{% url 'core:destination_list_view' %}" class="nav-link px-2 text-white">Explore</a></li>
-  
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Contact</a></li>
-    </ul>
-    <p class="text-center ">&copy; 2024 Discover Saudi Arabia, Inc</p>
-   <div class="position-relative">
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="{% url 'core:home_page_view' %}">Home</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Tourism</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="{% url 'core:destination_list_view' %}">Explore</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Support</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-decoration-none" href="#">Contact-Us</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <small class="d-block mb-3 text-body-light text-center">&copy; Discover Saudia Arabia 2023</small>
+    <div class="position-relative ">
     
-    <a href="#" class="position-absolute bottom-0 end-0 ">
-      <i class="bi bi-arrow-up-circle h2"></i>
-    </a>
-    </div> 
-  </div>
-  
+      <a href="#" class="position-absolute end-0 bottom-0">
+        <i class="bi bi-arrow-up-square h2"></i>
+      </a>
+      </div> 
   </footer>

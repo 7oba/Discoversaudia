@@ -4,12 +4,12 @@
 {% block title %}Destination Detail{% endblock %}
 {% block content %} 
 
-<main class="bg-light">
-    <div class="bg-dark text-light mt-4  bg-white" 
+<main class="text-body-dark">
+    <div class=" mt-4  text-body-dark" 
     style="height: 75vh; min-height: 300px; background-image: url('{{Destination_detail_Var.image.url}}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-      <div class="container h-80 ">
+      <div class="container h-80 pt-5 ">
         <div class="row h-100 align-items-center ">
-          <div class="col-12 text-left ">
+          <div class="col-12 text-left pt-5 ">
             <h1 class="fw-bold text-light "> <i>{{Destination_detail_Var.name}}</i> </h1>
             <p class=" fw-bold text-light ">City in Saudia Arabia</p>
           </div>
@@ -22,7 +22,7 @@
     <div class="p-5 w-100">
       <div class="col-md-12 ">
         <div class="h-100 p-5 border rounded-3 ">
-          <h2  class="display-5 fw-bold text-dark">Explore {{Destination_detail_Var.name}} history </h2>
+          <h2  class="display-5 fw-bold text-body-dark">Explore {{Destination_detail_Var.name}} history </h2>
           <p class="lead fw-bold ">{{Destination_detail_Var.summary}}</p>
         </div>
       </div>
