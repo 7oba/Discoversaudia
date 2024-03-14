@@ -22,3 +22,14 @@ class Destination(models.Model):
 
     def __str__(self) :
         return self.name
+
+
+
+class Comment(models.Model):
+    destination = models.ForeignKey(Destination, related_name='comments', on_delete=models.CASCADE)
+    username = models.CharField(max_length=25)
+    body = models.TextField(max_length=100,blank=True,null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-date_added']
