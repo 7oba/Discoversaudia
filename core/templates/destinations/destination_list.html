@@ -25,7 +25,7 @@
       
             </div>
             <div class="carousel-item">
-              <img src="{% static 'img/Carsouel_Saudiv4.jpg' %}" class="d-block w-100 h-100" alt="...">
+              <img src="{% static 'img/homepage_beach-in-saudi-arabia.jpg' %}" class="d-block w-100 h-100" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -48,7 +48,7 @@
       <div class="p-5">
         <div class="container">
             <h2 class="text-center text-body-dark">Discover Saudia Arabia</h2>
-            <hr>
+            
             <p class="lead text-center text-body-dark mb-5">
               Saudi Arabia is widely seen as the final frontier of tourism. As the birthplace of Islam, and a millennia-old crossroads of pilgrims and traders, the Kingdom’s rich culture and diverse heritage has no equal. In September 2019, Saudi Arabia opened its doors to the world for the first time. The launch of the Kingdom’s tourism visa saw visitors from around the globe flock to explore Saudi’s ancient history, striking landscapes, and warm hospitality. Last year, Saudi Arabia welcomed 67 million visitors, a sure sign that Vision 2030 is shaping the future of the Kingdom’s travel and tourism sector.        </p>
         
@@ -83,6 +83,7 @@
           </div>
         
       </div>
+    </div>
     
      
       <div id="tourism" class="p-5 text-body-dark">
@@ -103,6 +104,41 @@
         </div>
     </div>
     
+    
+    <div id="Tours" class="p-5 text-body-dark" >
+      <div class="container">
+        <div>
+          <h2 class="text-center text-body-dark">Top Best Sites to Visit In Saudia Arabia</h2>
+        </div>
+        
+        
+        
+        <p class="lead text-center text-body-dark mb-5">
+          Our Best Historical Sites 
+          
+        </p>
+        
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for site in Sites_list_Var|slice:":4"  %}
+          
+          <div class="col ">
+            <div class="card">
+              <a href="{% url 'core:site_detail_view' site.slug %}" class="text-decoration-none">
+              <img src="{{site.image.url}}" class="card-img-top"  width="100%" height="300" alt="...">
+              </a>
+              <p class=" lead card-text">Place in {{site.destination}}</p>
+              <div class="card-body">
+                <h5 class="card-title text-body-dark">{{site.name}}</h5>
+                
+              </div>
+            </div>
+         
+          </div>
+      
+          {% endfor %}
+        </div>
+      </div>
+  </div>
     
     
     
