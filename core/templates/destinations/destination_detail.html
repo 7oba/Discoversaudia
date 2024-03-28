@@ -39,7 +39,7 @@
           <h2 class="pb-2 border-bottom">Explore Best Historical sites in {{Destination_detail_Var.name}} City</h2>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           {% for site in Sites_list_Var %}
-          
+  
             <div class="col" >
               <a href="{% url 'core:site_detail_view' site.slug %}" class="text-decoration-none">
                 <div class="card shadow-sm ">
@@ -51,7 +51,7 @@
                 </div>
               </a>
             </div>
-          
+
           {% endfor %}
 
            
@@ -67,6 +67,37 @@
   
   </div>
   
+
+  <div class="p-5 w-100 ">
+    <div >
+      <h2 class="text-center text-body-dark left-aligned">Events in {{Destination_detail_Var.name}}</h2>
+  </div>
+
+  {% for event in Events_list_Var  %}
+  <div class="container col-xxl-8 px-0 py-0 mb-2  border rounded-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+     
+      <div class="col-sm-12 col-lg-6">
+        <a href="{% url 'core:event_detail_view' event.slug %}" class="text-decoration-none">
+        <img src="{{event.image.url}}"  class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </a>
+      </div>
+    
+      <div class="col-lg-6">
+        <h1 class="display-6 fw-bold text-body-dark lh-1 mb-2">{{event.name}}</h1>
+       
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="{% url 'core:event_detail_view' event.slug %}" class="text-decoration-none">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Explore</button>
+        </a>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
 
 
   <div class="p-5">

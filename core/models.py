@@ -17,6 +17,10 @@ def locations_image_upload(instance,filename):
     imagename,extension=filename.split('.')
     return "locations/%s%s.%s"%(txt,instance.id,extension)
 
+def events_image_upload(instance,filename):
+    txt='imgevents_'
+    imagename,extension=filename.split('.')
+    return "events/%s%s.%s"%(txt,instance.id,extension)
 
 class Destination(models.Model):
     name=models.CharField(max_length=100)
@@ -42,7 +46,7 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-date_added']
+        ordering = ['date_added']
 
 
 class Site(models.Model):
@@ -59,6 +63,26 @@ class Site(models.Model):
     def save(self,*args,**kwargs):
         self.slug=slugify(self.name)
         super(Site,self).save(*args, **kwargs)
+
+    def __str__(self) :
+        return self.name
+
+
+
+
+class Event(models.Model):
+    name=models.CharField(max_length=100)
+    description=models.TextField(max_length=1000)
+    image=models.ImageField(upload_to=events_image_upload)
+    price=models.IntegerField(default=0)
+    published_at=models.DateTimeField()
+    destination=models.ForeignKey(Destination, related_name='events', on_delete=models.CASCADE)
+    ticket_link=models.URLField(max_length=250)
+    slug=models.SlugField(blank=True,null=True)
+
+    def save(self,*args,**kwargs):
+        self.slug=slugify(self.name)
+        super(Event,self).save(*args, **kwargs)
 
     def __str__(self) :
         return self.name

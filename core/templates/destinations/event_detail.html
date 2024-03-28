@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Event Detail{% endblock %}
+{% block content %} 
+<main class="text-body-dark">
+    <div class="text-body-dark mt-4" style="height: 75vh; min-height: 300px; background-image: url('{{Event_detail_Var.image.url}}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+      <div class="container h-100 ">
+        <div class="row h-100 align-items-center">
+          <div class="col-12 text-left ">
+            <h1 class="fw-bold text-light"> <i>{{Event_detail_Var.name}}</i> </h1>
+            <p class=" fw-bold text-light ">An Event Happened {{Event_detail_Var.destination.name}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   
+      <div class="col-md-12 ">
+        <div class="h-100 p-5 border rounded-3 ">
+          <h2  class="display-5 fw-bold text-body-dark"> {{Event_detail_Var.name}} </h2>
+          <p class="lead fw-bold ">{{Event_detail_Var.description}}.</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+    <div class="p-5 w-100">
+      <div class="container p-5">
+        <div class="row">
+          
+          <div class="col-lg-12 col-md-12 mb-4 text-center">
+            <div class="card h-100 shadow-lg">
+              <div class="card-body">
+                <div class="text-center p-3">
+                  <h5 class="card-title">{{Event_detail_Var.name}}</h5>
+                  <small>Happened At {{Event_detail_Var.published_at}} </small>
+                  <br><br>
+                  <span class="h2">Only SR {{Event_detail_Var.price}}</span> 
+                  <br><br>
+                  <p class="lead fw-bold">Have Your Ticket Now !</p>
+                  <br><br>
+  
+                </div>
+              </div>
+           
+  
+  
+              <div class="card-body text-center">
+                <a href="{{Event_detail_Var.ticket_link}}" class="text-decoration-none">
+                <button class="btn btn-outline-primary btn-lg" style="border-radius:30px">Pay</button>
+              </a>
+              </div>
+            </div>
+          </div>
+  
+        </div>    
+      </div>
+    </div>
+  
+  
+  </main>
+  
+  
+  
+  
+
+
+{% endblock content %}

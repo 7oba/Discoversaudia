@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Destination,Comment,Site
+from .models import Destination,Comment,Site,Event
 
 # Create your views here.
 def home_index(request):
@@ -16,6 +16,7 @@ def destination_list_view(request):
 def destination_detail_view(request,slug):
     destination_detail=Destination.objects.get(slug=slug)
     site_list=Site.objects.filter(destination=destination_detail)
+    event_list=Event.objects.filter(destination=destination_detail)
     if request.method == 'POST':
         body = request.POST.get('body')
         username=request.POST.get('username')
@@ -31,7 +32,7 @@ def destination_detail_view(request,slug):
             print('Invalid form data')
 
 
-    context={'Destination_detail_Var':destination_detail,'Sites_list_Var':site_list}
+    context={'Destination_detail_Var':destination_detail,'Sites_list_Var':site_list,'Events_list_Var':event_list}
     return render(request,'destinations/destination_detail.html',context)
 
 
@@ -43,6 +44,11 @@ def site_detail_view(request,slug):
 
 
 
+
+def event_detail_view(request,slug):
+    event_detail=Event.objects.get(slug=slug)
+    context={'Event_detail_Var':event_detail}
+    return render(request,'destinations/event_detail.html',context)
 
 
 
