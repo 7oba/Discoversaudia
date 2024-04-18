@@ -83,12 +83,12 @@
       </a>
       </div>
     
-      <div class="col-lg-6">
-        <h1 class="display-6 fw-bold text-body-dark lh-1 mb-2">{{event.name}}</h1>
+      <div class="col-lg-6 ">
+        <h1 class="display-6 fw-bold text-body-dark text-center lh-1 ">{{event.name}}</h1>
        
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a href="{% url 'core:event_detail_view' event.slug %}" class="text-decoration-none">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Explore</button>
+        <div class="d-grid  d-md-flex justify-content-md-start pt-2 text-center">
+        <a href="{% url 'core:event_detail_view' event.slug %}" class="text-decoration-none w-100 align-item-center justify-content-center ">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 align-self-center ">Explore</button>
         </a>
            
         </div>

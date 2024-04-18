@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}Destination List{% endblock %}
+{% block stylesheet %}{% static 'css/style.css' %}{% endblock stylesheet %}
 {% block content %} 
 <main>
 
@@ -122,12 +123,12 @@
           {% for site in Sites_list_Var|slice:":4"  %}
           
           <div class="col ">
-            <div class="card">
+            <div class="card cardA">
               <a href="{% url 'core:site_detail_view' site.slug %}" class="text-decoration-none">
               <img src="{{site.image.url}}" class="card-img-top"  width="100%" height="300" alt="...">
               </a>
               <p class=" lead card-text">Place in {{site.destination}}</p>
-              <div class="card-body">
+              <div class="card-body ps-0 p-3 ">
                 <h5 class="card-title text-body-dark">{{site.name}}</h5>
                 
               </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Destination,Comment,Site,Event
-
+import datetime
+from django.db.models import Q
 # Create your views here.
 def home_index(request):
     return render(request,'home/homepage.html')
@@ -16,7 +17,7 @@ def destination_list_view(request):
 def destination_detail_view(request,slug):
     destination_detail=Destination.objects.get(slug=slug)
     site_list=Site.objects.filter(destination=destination_detail)
-    event_list=Event.objects.filter(destination=destination_detail)
+    event_list=Event.objects.filter(Q(published_at__gte=datetime.date(2024, 1, 1))&Q(price__gte=50),destination=destination_detail)
     if request.method == 'POST':
         body = request.POST.get('body')
         username=request.POST.get('username')
