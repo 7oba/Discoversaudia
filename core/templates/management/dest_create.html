@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Destination Create{% endblock %}
+
+{% block content %} 
+
+<main class="text-body-dark"> 
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h4>Create New Destination</h4>
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+
+
+                <label class="small font-weight-bold">{{ dest_form.name.label}}</label>
+    {{ dest_form.name }}
+    <label class="small font-weight-bold">{{ dest_form.summary.label}}</label>
+    {{ dest_form.summary }}
+    {% comment %} <label class="small font-weight-bold">{{ dest_form.published_at.label}}</label>
+    {{ dest_form.published_at }} {% endcomment %}
+    <label class="small font-weight-bold">{{ dest_form.image.label}}</label>
+    {{ dest_form.image }}
+  
+
+
+
+    <button class="btn btn-success btn-block py-2 mb-4 mt-5 fw-bold w-100" type="submit" value="Create Destination">Create</button>
+    <hr class="mb-3">
+                    
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</main>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

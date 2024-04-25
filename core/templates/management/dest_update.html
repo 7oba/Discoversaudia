@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Destination Update{% endblock %}
+
+{% block content %}
+<main class="text-body-dark"> 
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h4>Update Your Destination</h4>
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+            
+                
+                <label class="small font-weight-bold">{{ updatedest_form.name.label}}</label>
+                {{ updatedest_form.name }}
+                <label class="small font-weight-bold">{{ updatedest_form.summary.label}}</label>
+                {{ updatedest_form.summary }}
+                {% comment %} <label class="small font-weight-bold">{{ updatedest_form.published_at.label}}</label>
+                {{ updatedest_form.published_at }} {% endcomment %}
+                <label class="small font-weight-bold">{{ updatedest_form.image.label}}</label>
+                {{ updatedest_form.image }}
+              
+            
+            
+            
+                <button class="btn btn-success btn-block py-2 mb-4 mt-5 fw-bold w-100" type="submit" value="Update Destination">Update</button>
+                <hr class="mb-3">
+                                
+
+                    
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
