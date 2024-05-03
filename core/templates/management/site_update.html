@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Site Update{% endblock %}
+
+{% block content %}
+<main class="text-body-dark"> 
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h4>Update Your Site</h4>
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+            
+                
+                <label class="small font-weight-bold">{{ updatesite_form.name.label}}</label>
+                {{ updatesite_form.name }}
+                <label class="small font-weight-bold">{{ updatesite_form.summary.label}}</label>
+                {{ updatesite_form.summary }}
+                <label class="small font-weight-bold">{{ updatesite_form.image.label}}</label>
+                {{ updatesite_form.image }}
+                <label class="small font-weight-bold">{{ updatesite_form.location.label}}</label>
+                {{ updatesite_form.location }}
+                <label class="small font-weight-bold">{{ updatesite_form.destination.label}}</label>
+                {{ updatesite_form.destination }} 
+                <label class="small font-weight-bold">{{ updatesite_form.map_link.label}}</label>
+                {{ updatesite_form.map_link }} 
+            
+            
+            
+                <button class="btn btn-success btn-block py-2 mb-4 mt-5 fw-bold w-100" type="submit" value="Update Site">Update</button>
+                <hr class="mb-3">
+                                
+
+                    
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

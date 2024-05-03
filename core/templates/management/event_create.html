@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Event Create{% endblock %}
+
+{% block content %} 
+
+<main class="text-body-dark"> 
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h4>Create New Event</h4>
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+
+
+                <label class="small font-weight-bold">{{ event_form.name.label}}</label>
+    {{ event_form.name }}
+    <label class="small font-weight-bold">{{ event_form.description.label}}</label>
+    {{ event_form.description }}
+    <label class="small font-weight-bold">{{ event_form.image.label}}</label>
+    {{ event_form.image }}
+     <label class="small font-weight-bold">{{ event_form.published_at.label}}</label>
+    {{ event_form.published_at }} 
+    <label class="small font-weight-bold">{{ event_form.destination.label}}</label>
+    {{ event_form.destination }} 
+    <label class="small font-weight-bold">{{ event_form.ticket_link.label}}</label>
+    {{ event_form.ticket_link }} 
+    <label class="small font-weight-bold">{{ event_form.price.label}}</label>
+    {{ event_form.price }} 
+
+
+
+    <button class="btn btn-success btn-block py-2 mb-4 mt-5 fw-bold w-100" type="submit" value="Create Event">Create</button>
+    <hr class="mb-3">
+                    
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</main>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

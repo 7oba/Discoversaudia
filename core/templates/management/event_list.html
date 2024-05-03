@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Event List{% endblock %}
+
+{% block content %}
+
+<main class="text-body-dark"> 
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h4>ALL Events</h4>
+            <a href="{% url 'core:createevent_view' %}" class="btn btn-indigo btn-primary btn-sm m-0 float-end">Create</a>
+            <table class="table table-striped table-responsive-md  btn-table">
+
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    
+                    <th></th>
+                    <th></th
+                    
+                  </tr>
+                </thead>
+                
+                <tbody>
+                {% for event in All_Events_Var %}
+                  <tr>
+                    <th scope="row"></th>
+                    <td><a href="{% url 'core:showevent_view' event.slug %}">{{event.name}}</a></td>
+                    <td>
+                        <a href="{% url 'core:updateevent_view' event.slug %}" class="btn btn-indigo btn-warning btn-sm m-0">Update</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'core:deleteevent_view' event.slug %}" class="btn btn-indigo btn-danger btn-sm m-0">Delete</a>
+                    </td>
+                    
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+                
+                </table>
+        </div>
+    </div>
+</div>
+
+</main>
+{% endblock content %}
