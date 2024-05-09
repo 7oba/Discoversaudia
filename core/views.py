@@ -63,7 +63,7 @@ def event_detail_view(request,slug):
 #Start of Destination-Views-Fucntions Section
 
 def destlist_view(request):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         dest_list=Destination.objects.all()
         context={"All_Destinations_Var":dest_list}
         return render(request,'management/dest_list.html',context)
@@ -74,7 +74,7 @@ def destlist_view(request):
 
 
 def showdest_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         dest_show=Destination.objects.get(slug=slug)
         context={"Destination_Var":dest_show}
         return render(request,'management/dest_show.html',context)
@@ -84,7 +84,7 @@ def showdest_view(request,slug):
 
 
 def createdest_view(request):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         if request.method=="POST":
             form=DestinationForm(request.POST,request.FILES)
             if form.is_valid():
@@ -100,7 +100,7 @@ def createdest_view(request):
 
 
 def updatedest_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         dest=Destination.objects.get(slug=slug)
         if request.method=="POST":
             form=DestinationForm(request.POST,request.FILES,instance=dest)
@@ -118,7 +118,7 @@ def updatedest_view(request,slug):
 
 
 def deletedest_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         dest=Destination.objects.get(slug=slug)
         dest.delete()
         messages.success(request,("Destination Deleted Successfully!"))
@@ -139,7 +139,7 @@ def deletedest_view(request,slug):
 
 
 def sitelist_view(request):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         site_list=Site.objects.all()
         context={"All_Sites_Var":site_list}
         return render(request,'management/site_list.html',context)
@@ -148,7 +148,7 @@ def sitelist_view(request):
 
 
 def showsite_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         site_show=Site.objects.get(slug=slug)
         context={"Site_Var":site_show}
         return render(request,'management/site_show.html',context)
@@ -157,7 +157,7 @@ def showsite_view(request,slug):
 
 
 def createsite_view(request):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         if request.method=="POST":
             form=SiteForm(request.POST,request.FILES)
             if form.is_valid():
@@ -172,7 +172,7 @@ def createsite_view(request):
 
 
 def updatesite_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         site=Site.objects.get(slug=slug)
         if request.method=="POST":
             form=SiteForm(request.POST,request.FILES,instance=site)
@@ -189,7 +189,7 @@ def updatesite_view(request,slug):
   
 
 def deletesite_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         site=Site.objects.get(slug=slug)
         site.delete()
         messages.success(request,("Site Deleted Successfully!"))
@@ -206,7 +206,7 @@ def deletesite_view(request,slug):
 
 
 def eventlist_view(request):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         event_list=Event.objects.all()
         context={"All_Events_Var":event_list}
         return render(request,'management/event_list.html',context)
@@ -216,7 +216,7 @@ def eventlist_view(request):
 
 
 def showevent_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         event_show=Event.objects.get(slug=slug)
         context={"Event_Var":event_show}
         return render(request,'management/event_show.html',context)
@@ -225,7 +225,7 @@ def showevent_view(request,slug):
 
 
 def createevent_view(request):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         if request.method=="POST":
             form=EventForm(request.POST,request.FILES)
             if form.is_valid():
@@ -240,7 +240,7 @@ def createevent_view(request):
 
 
 def updateevent_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         event=Event.objects.get(slug=slug)
         if request.method=="POST":
             form=EventForm(request.POST,request.FILES,instance=event)
@@ -257,7 +257,7 @@ def updateevent_view(request,slug):
 
 
 def deleteevent_view(request,slug):
-    if request.user.is_superuser:
+    if request.user.is_admin:
         event=Event.objects.get(slug=slug)
         event.delete()
         messages.success(request,("Event Deleted Successfully!"))
