@@ -1,5 +1,5 @@
 from django import forms
-from .models import Destination,Event,Site
+from .models import Destination,Event,Site,Comment
 
 
 
@@ -50,3 +50,8 @@ class SiteForm(forms.ModelForm):
         model = Site
         fields=('name','summary','image','location','destination','map_link')
   
+class CommentForm(forms.ModelForm):
+    body=forms.CharField(label='', min_length=10,required=True, max_length=2000, widget=forms.Textarea(attrs={'class': 'form-control mb-3'}))
+    class Meta:
+        model = Comment
+        fields = ['body']

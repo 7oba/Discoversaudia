@@ -10,6 +10,7 @@ urlpatterns = [
     path('destinations/<str:slug>',views.destination_detail_view,name="destination_detail_view"),
     path('destinations/sites/<str:slug>',views.site_detail_view,name="site_detail_view"),
     path('destinations/events/<str:slug>',views.event_detail_view,name="event_detail_view"),
+    path('destinations/deletecomment/<int:id>',views.delete_comment_view,name="delete_comment_view"),
     ########Destination path##########
     path('management/destinatons-list',views.destlist_view,name="destlist_view"),
     path('management/show-destinaton/<str:slug>',views.showdest_view,name="showdest_view"),

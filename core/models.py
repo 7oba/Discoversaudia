@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from accounts.models import Profile
 # Create your models here.
 
 
@@ -39,11 +40,14 @@ class Destination(models.Model):
 
 
 
+
+
 class Comment(models.Model):
     destination = models.ForeignKey(Destination, related_name='comments', on_delete=models.CASCADE)
     username = models.CharField(max_length=25)
     body = models.TextField(max_length=100,blank=True,null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(Profile,related_name='comment_owner',on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['date_added']

@@ -4,7 +4,7 @@ import datetime
 from django.db.models import Q
 from django.urls import reverse
 from django.http import HttpResponse
-from .forms import DestinationForm,EventForm,SiteForm
+from .forms import DestinationForm,EventForm,SiteForm,CommentForm
 from django.contrib import messages
 
 # Create your views here.
@@ -24,22 +24,37 @@ def destination_detail_view(request,slug):
     site_list=Site.objects.filter(destination=destination_detail)
     event_list=Event.objects.filter(Q(published_at__gte=datetime.date(2024, 1, 1))&Q(price__gte=500),destination=destination_detail)
     if request.method == 'POST':
-        body = request.POST.get('body')
-        username=request.POST.get('username')
-        if len(body) >= 10 and len(body) <= 2000:
-            comment = Comment.objects.create(
-                body=body,
-                username=username,
-                destination=destination_detail,
-            )
-            comment.save()
-            return redirect('core:destination_detail_view', slug=slug)
-        else:
-            print('Invalid form data')
+        form=CommentForm(request.POST,request.FILES)
+        if form.is_valid():
+            myform=form.save(commit=False)
+            myform.destination=destination_detail
+            myform.username=str(request.user.name)
+            myform.email=str(request.user.email)
+            myform.author=request.user
+            myform.save()
+            return redirect('core:destination_detail_view',slug=slug)
+            form=CommentForm() 
+            print('Succesfully Submit')
 
-
-    context={'Destination_detail_Var':destination_detail,'Sites_list_Var':site_list,'Events_list_Var':event_list}
+    else:
+        form=CommentForm()
+    context={'Destination_detail_Var':destination_detail,'Sites_list_Var':site_list,'Events_list_Var':event_list,'CommentForm':form}
     return render(request,'destinations/destination_detail.html',context)
+
+
+
+
+def delete_comment_view(request,id):
+    comment=Comment.objects.get(id=id)
+    destination=Destination.objects.get(slug=comment.destination.slug)
+    if request.user==comment.author or request.user.is_admin:
+        comment.delete()
+        return redirect('core:destination_detail_view',slug=destination.slug)
+        # return redirect('core:destination_list_view')
+         
+    else:
+        return redirect('core:destination_list_view')
+
 
 
 
